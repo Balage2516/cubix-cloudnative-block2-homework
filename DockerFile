@@ -1,6 +1,12 @@
 #getting image from quay.io
+FROM quay.io/drsylent/cubix/block2/homework-base:java17
 
 #labels and environment variables
 LABEL cubix.homework.owner="Homework Containerization" Author="Balázs Császár"
-ENV CUBIX_HOMEWORK=Balazs Csaszar
-ENV APP_DEFAULT_MESSAGE=Hello Homework2
+
+#environment variables
+ENV CUBIX_HOMEWORK="Balazs Csaszar"
+ENV APP_DEFAULT_MESSAGE="Hello Homework2"
+
+COPY target/*.jar homework2.jar
+ENTRYPOINT exec java -jar homework2.jar
